@@ -55,6 +55,9 @@ body {
   opacity: 70%;
 }
 
+.nav_app {
+  margin-bottom: 50px;
+}
 .nav_app ul {
   display: flex;
   align-items: center;
@@ -110,6 +113,54 @@ body {
 }
 .nav_app ul .nav_right .link_signin:hover {
   background-color: #AF1717;
+}
+
+.setting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin: 20px;
+}
+
+table {
+  margin: 20px auto;
+}
+table thead {
+  background-color: #F24646;
+  text-align: center;
+}
+table thead th {
+  padding: 5px;
+}
+table tbody {
+  text-align: center;
+  color: #ffffff;
+}
+table tbody a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.2s;
+}
+table tbody a:hover {
+  color: #F24646;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #272727;
+  padding: 5px;
+  border-radius: 2.5px;
+  margin: 2.5px;
+}
+.pagination .active {
+  background-color: #F24646;
 }
 
 @media screen and (max-width: 850px) {

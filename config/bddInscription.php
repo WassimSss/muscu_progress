@@ -28,8 +28,8 @@ if(isset($_POST['submit_signup']))
                     {
                         $erreur = "OK";
 
-                        $addMember = $bdd->prepare("INSERT INTO membres (username, email, password) VALUES (?, ?, ?)");
-                        $addMember->execute(array($username, $email, $password));
+                        $addMember = $bdd->prepare("INSERT INTO membres (username, email, password, role_admin) VALUES (?, ?, ?, ?)");
+                        $addMember->execute(array($username, $email, $password, 0));
 
                         $_SESSION["email_user"] = $email;
                         header('Location: ../pages/connexion.php');

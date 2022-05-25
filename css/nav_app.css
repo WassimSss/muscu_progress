@@ -55,6 +55,9 @@ body {
   opacity: 70%;
 }
 
+.nav_app {
+  margin-bottom: 50px;
+}
 .nav_app ul {
   display: flex;
   align-items: center;

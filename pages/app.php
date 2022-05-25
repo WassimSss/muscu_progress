@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
-    require '../model/Exercise.php'
-
+    require '../model/Exercise.php';
+    $title = 'App';
 ?>
 
     <!DOCTYPE html>
@@ -13,30 +13,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/app.css">
-        <title>App</title>
+        <title><?=$title?></title>
     </head>
 
     <body>
-        <nav class="nav_app">
-            <ul>
-                <div class="nav_left">
-                    <li><a href="../index.php"><img class="img_logo" src="../image/dumbbell.png"></a></li>
-                    <li><a href="../index.php">MuscuProgress</a></li>
-                </div>
-
-                <div class="nav_mid">
-                    <li><a class="link_signin active_link" href="app.php">Exercice</a></li>
-                    <li><a class="link_signup no_active" href="profil.php">Profil</a></li>
-                    <?php if ($_SESSION['role_admin'] == 1) {?>
-                        <li><a class="no_active" href="admin.php">Admin</a></li>
-                    <?php } ?>
-                </div>
-
-                <div class="nav_right">
-                    <li><a href="deconnexion.php">Deconnexion</a></li>
-                </div>
-            </ul>
-        </nav>
+    <?php require '../pages/navBarApp.php'; ?>
 
         <div class="all_app">
 

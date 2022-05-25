@@ -1,5 +1,60 @@
 @import 'nav_app';
 
+.setting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    margin: 20px;
+}
+
+table{
+    margin: 20px auto;
+
+    thead{
+        background-color: $red;
+        text-align: center;
+
+            th{
+                padding: 5px;
+            }
+
+    }
+
+    tbody{
+        text-align: center;
+        color: $white;
+
+        a{
+            text-decoration: none;
+            color: $white;
+            transition: color 0.2s;
+
+            &:hover{
+                color: $red;
+            }
+        }
+    }
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a{
+        color: $white;
+        text-decoration: none;
+        background-color: $greyplus;
+        padding: 5px;
+        border-radius: 2.5px;
+        margin: 2.5px;
+    }
+
+    .active{
+        background-color: $red;
+    }
+}
 @media screen and (max-width: 850px){
 
     .nav_app{

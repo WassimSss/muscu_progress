@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 require('Exercise.php');
 
 $test = new Exercise;

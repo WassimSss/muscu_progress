@@ -1,5 +1,9 @@
 <?php
-require '../config/Bdd.php';
+
+// if (!$bddDesactivated) {
+    require_once '../config/Bdd.php';
+// }
+
 
 class Exercise {
     protected $pdo;
@@ -43,7 +47,7 @@ class Exercise {
     }
 
     public function recupAllChoiseExercise(){
-        $recupAllExercise = $this->pdo->prepare("SELECT muscle, exercise FROM all_muscle ORDER BY `all_muscle`.`exercise` ASC");
+        $recupAllExercise = $this->pdo->prepare("SELECT muscle, exercise, id FROM all_muscle ORDER BY `all_muscle`.`exercise` ASC");
         $recupAllExercise->execute();
         $fetchRecupAllExercise = $recupAllExercise->fetchAll();
         return $fetchRecupAllExercise;

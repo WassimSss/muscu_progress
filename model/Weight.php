@@ -1,5 +1,5 @@
 <?php
-require '../config/Bdd.php';
+require_once '../config/Bdd.php';
 
 class Weight {
     protected $pdo;

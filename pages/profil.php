@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
-    require '../model/Weight.php'
+    require '../model/Weight.php';
+    $title = 'Profil'
 ?>
 
     <!DOCTYPE html>
@@ -13,30 +14,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/profil.css">
 
-        <title>Profil</title>
+        <title><?= $title ?></title>
     </head>
 
     <body>
-        <nav class="nav_app">
-            <ul>
-                <div class="nav_left">
-                    <li><a href="../index.php"><img class="img_logo" src="../image/dumbbell.png"></a></li>
-                    <li><a href="../index.php">MuscuProgress</a></li>
-                </div>
-
-                <div class="nav_mid">
-                    <li><a class="link_signin no_active" href="app.php">Exercice</a></li>
-                    <li><a class="link_signup active_link" href="profil.php">Profil</a></li>
-                    <?php if ($_SESSION['role_admin'] == 1) { ?>
-                        <li><a class="no_active" href="admin.php">Admin</a></li>
-                    <?php } ?>
-                </div>
-
-                <div class="nav_right">
-                    <li><a href="deconnexion.php">Deconnexion</a></li>
-                </div>
-            </ul>
-        </nav>
+    <?php require '../pages/navBarApp.php'; ?>
 
         <div class="weight">
             <h2>Suivez votre <span class="red">poids</span> tout au long des semaines</h2>
@@ -59,7 +41,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
         <section class="weight_section">
             <canvas id="weight_canvas" aria-label="chart" role="img"></canvas>
         </section>
-        
+
         <div id="registration_success">
             <div class="popup_registration">
                 <p class="close_btn">
