@@ -1,0 +1,132 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap");
+/*Enlever style input number*/
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button, input::-o-outer-spin-button {
+  -o-appearance: none;
+  margin: 0;
+}
+
+body {
+  background-color: #121212;
+  margin: 0;
+  padding: 0;
+  font-family: "Signika", sans-serif !important;
+}
+
+.red {
+  color: #F24646;
+}
+
+.grey {
+  color: #898989;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.active_link {
+  color: #F24646 !important;
+  opacity: 70%;
+  transition: 0.25s;
+}
+.active_link:hover {
+  opacity: 100%;
+}
+
+.no_active {
+  color: #898989 !important;
+  transition: 0.25s;
+}
+.no_active:hover {
+  color: #F24646 !important;
+  opacity: 70%;
+}
+
+.nav_app ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+.nav_app ul div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav_app ul div a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav_app ul .nav_left {
+  margin-left: 5%;
+}
+.nav_app ul .nav_left a {
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+.nav_app ul .nav_left a:hover {
+  opacity: 70%;
+}
+.nav_app ul .nav_left .img_logo {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.nav_app ul .nav_mid li {
+  margin-right: 20px;
+}
+.nav_app ul .nav_right {
+  margin-right: 5%;
+}
+.nav_app ul .nav_right .link_signup {
+  color: #898989;
+  transition: 0.25s;
+}
+.nav_app ul .nav_right .link_signup:hover {
+  color: #F24646;
+  opacity: 70%;
+}
+.nav_app ul .nav_right .link_signin {
+  background-color: #F24646;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: 0.25s;
+}
+.nav_app ul .nav_right .link_signin:hover {
+  background-color: #AF1717;
+}
+
+@media screen and (max-width: 850px) {
+  .nav_app ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav_app ul .nav_left {
+    margin: 0 !important;
+  }
+  .nav_app ul .nav_mid li {
+    margin: 5px !important;
+  }
+  .nav_app ul .nav_right {
+    margin: 0 !important;
+  }
+}
+
+/*# sourceMappingURL=admin.css.map */

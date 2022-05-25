@@ -1,0 +1,36 @@
+@import 'general_form';
+
+
+.signin_form {
+    width: 340px;
+}
+
+.signin_div {
+    margin: 0 0 25px 30px;
+}
+
+#submit_signin{
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 650px){ 
+    .nav_form{
+        
+        ul{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .nav_left{
+                transform: translateX(-20px);
+            }
+        }
+    }
+
+    .signin_form{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    
+}

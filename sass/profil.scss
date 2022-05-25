@@ -1,0 +1,178 @@
+@import 'nav_app';
+
+.weight_section{
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.weight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $black;
+    border: 2px solid $greyplus;
+    border-radius: 20px;
+    width: 400px;
+    margin: 30px auto 30px auto;
+    color: $white !important;
+
+    h2{
+        text-align: center;
+    }
+
+    .block_weight{
+        background-color: $greyplus;
+        font-size: 50px;
+        height: 50px;
+        width: 50px;
+        padding: 5px;
+        border-radius: 10px;
+
+        #add_weight{
+            cursor: pointer !important;
+        }
+    }
+}
+
+#registration_success{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 50;
+	visibility:hidden;
+
+    .close_btn{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+	.popup_registration{
+		margin: 6rem auto;
+		padding: 2rem;
+		background-color: $black;
+        color: $white;
+		border-radius: 10px;
+		width: 40%;
+		position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        a{
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        input[type="button"]{
+            margin: 32px;
+        }
+
+	}
+	h1, p{
+		margin: 0;
+		text-align: center;
+	}
+
+}
+
+.informations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $black;
+    border: 2px solid $greyplus;
+    border-radius: 20px;
+    width: 400px;
+    margin: auto;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.input_and_label {
+    position: relative;
+    background-color: $greyplus;
+    border-radius: 20px;
+    height: 50px;
+    margin: 15px 0 45px 30px;
+    overflow: hidden;
+
+    input {
+        position: absolute;
+        bottom: 2px;
+        left: 20px;
+        height: 50%;
+        width: calc(100% - 40px);
+        background-color: $greyplus;
+        opacity: 100%;
+        color: $white;
+    }
+
+    label {
+        position: absolute;
+        left: 20px;
+        top: 5px;
+        color: $red;
+    }
+}
+
+.pseudo{
+    width: 150px;
+}
+
+.password{
+    width: 300px;
+}
+.submit_style {
+    background-color: $red;
+    color: $white;
+    padding: 7px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transform: translateY(-20px);
+    transition: 0.25s;
+    font-size: 15px;
+
+    &:hover {
+        background-color: $redplus;
+    }
+}
+
+@media screen and (max-width: 850px){
+
+    .nav_app{
+        
+        ul{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .nav_left{
+                // transform: translateX(-20px);
+                margin: 0 !important;
+            }
+
+            .nav_mid{
+                li{
+                    margin: 5px !important;
+                }
+            }
+
+            .nav_right{
+                margin: 0 !important;
+            }
+        }
+    }
+}

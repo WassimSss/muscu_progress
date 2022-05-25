@@ -1,0 +1,206 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap");
+/*Enlever style input number*/
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button, input::-o-outer-spin-button {
+  -o-appearance: none;
+  margin: 0;
+}
+
+body {
+  background-color: #121212;
+  margin: 0;
+  padding: 0;
+  font-family: "Signika", sans-serif !important;
+}
+
+.red {
+  color: #F24646;
+}
+
+.grey {
+  color: #898989;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.active_link {
+  color: #F24646 !important;
+  opacity: 70%;
+  transition: 0.25s;
+}
+.active_link:hover {
+  opacity: 100%;
+}
+
+.no_active {
+  color: #898989 !important;
+  transition: 0.25s;
+}
+.no_active:hover {
+  color: #F24646 !important;
+  opacity: 70%;
+}
+
+.nav_index ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+.nav_index ul div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav_index ul div a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav_index ul .nav_left {
+  margin-left: 5%;
+}
+.nav_index ul .nav_left a {
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+.nav_index ul .nav_left a:hover {
+  opacity: 70%;
+}
+.nav_index ul .nav_left .img_logo {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.nav_index ul .nav_right {
+  position: absolute;
+  right: 5%;
+}
+.nav_index ul .nav_right a {
+  margin: 0 5px 0 5px;
+}
+.nav_index ul .nav_right .link_signup {
+  color: #898989;
+  transition: 0.25s;
+}
+.nav_index ul .nav_right .link_signup:hover {
+  color: #F24646;
+  opacity: 70%;
+}
+.nav_index ul .nav_right .link_signin {
+  background-color: #F24646;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: 0.25s;
+}
+.nav_index ul .nav_right .link_signin:hover {
+  background-color: #AF1717;
+}
+
+.slogan_index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #ffffff;
+  height: 70vh;
+}
+.slogan_index h3, .slogan_index p {
+  margin: 0;
+}
+.slogan_index h3 {
+  font-size: 30px;
+  max-width: 500px;
+  text-align: center;
+}
+.slogan_index p {
+  max-width: 300px;
+  text-align: center;
+}
+
+.presentation {
+  margin: auto;
+  color: #ffffff;
+}
+.presentation h4 {
+  text-align: center;
+  font-size: 1.4em;
+}
+.presentation div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+.presentation div p {
+  max-width: 350px;
+}
+.presentation .seance_jour {
+  flex-direction: row-reverse;
+}
+.presentation .seance_jour p {
+  margin: 20px;
+}
+.presentation .seance_jour_x {
+  flex-direction: column;
+}
+
+@media screen and (max-width: 450px) {
+  .nav_index ul {
+    justify-content: space-around;
+  }
+  .nav_index ul div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav_index ul div a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+  }
+  .nav_index ul .nav_left a {
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+  .nav_index ul .nav_left a:hover {
+    opacity: 70%;
+  }
+  .nav_index ul .nav_right {
+    position: static;
+    display: flex;
+  }
+  .nav_index ul .nav_right a {
+    margin: 5px 0px;
+  }
+  .nav_index ul .nav_right li {
+    margin: 0 10px;
+  }
+  .nav_index ul .nav_right .link_signin {
+    background-color: #F24646;
+    padding: 3px 6px;
+    border-radius: 20px;
+    transition: 0.25s;
+  }
+  .nav_index ul .nav_right .link_signin:hover {
+    background-color: #AF1717;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

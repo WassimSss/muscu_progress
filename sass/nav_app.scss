@@ -1,0 +1,76 @@
+@import 'general';
+.nav_app {
+
+    ul{
+        display: flex;   
+        align-items: center;
+        justify-content: space-between;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 0 0 0;
+
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+                a {
+                    text-decoration: none;
+                    color: $white;
+            }
+        }
+
+        .nav_left {
+            margin-left: 5%;
+            a{
+                font-size: 20px;
+                font-weight: 600;
+                transition: 0.25s;
+
+                &:hover{
+                    opacity: 70%;
+                }
+            }
+
+
+
+            .img_logo{
+                height: 40px;
+                width: 40px;
+                margin-right:10px;
+            }
+        }
+
+        .nav_mid{
+            li{
+                margin-right: 20px;
+            }
+
+        }
+   
+        .nav_right {
+            margin-right: 5%;
+            .link_signup{
+                color: $grey;
+                transition: 0.25s;
+
+                &:hover {
+                    color: $red;
+                    opacity: 70%;
+                }
+            }
+
+            .link_signin{
+                background-color: $red;
+                padding: 6px 12px;
+                border-radius: 20px;
+                transition: 0.25s;
+
+                &:hover {
+                    background-color: $redplus;
+                }
+            }
+        }   
+    }
+}
+

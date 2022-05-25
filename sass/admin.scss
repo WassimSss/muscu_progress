@@ -1,0 +1,28 @@
+@import 'nav_app';
+
+@media screen and (max-width: 850px){
+
+    .nav_app{
+        
+        ul{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .nav_left{
+                // transform: translateX(-20px);
+                margin: 0 !important;
+            }
+
+            .nav_mid{
+                li{
+                    margin: 5px !important;
+                }
+            }
+
+            .nav_right{
+                margin: 0 !important;
+            }
+        }
+    }
+}
