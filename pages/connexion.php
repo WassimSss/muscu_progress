@@ -54,6 +54,10 @@ require '../config/bddConnexion.php';
             
         </form>
     </section>
+
+
     <?php if(isset($erreur)){echo $erreur;} ?>
+
+    <?php require '../pages/footer.php'; ?>
 </body>
 </html>

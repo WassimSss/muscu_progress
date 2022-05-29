@@ -28,17 +28,12 @@ var getHttpRequest = function() {
 
 var httpRequest = getHttpRequest();
 
-function createGraphic(arrayData) {
+function createGraphic(arrayLabel, arrayData) {
     const weightCanvas = document.getElementById("weight_canvas");
     const graphicChart = new Chart(weightCanvas, {
     type: "bar",
     data: {
-        labels: [
-            '3.05.2022',
-            '10.05.2022',
-            '17.05.2022',
-            '24.05.2022'
-        ],
+        labels: arrayLabel,
         datasets: [{
             label: 'Kg',
             data: arrayData,
@@ -68,8 +63,8 @@ function createGraphic(arrayData) {
 })
 }
 
-var arrayAllWeight = [];
 var arrayAllDate = [];
+var arrayAllWeight = [];
 function fetchWeight() {
 	// Retourne en GET et choisi la fonction a executer
 	httpRequest.onreadystatechange = () => {
@@ -79,7 +74,7 @@ function fetchWeight() {
                 arrayAllWeight.push(allWeight[o]['weight'])
                 arrayAllDate.push(allWeight[o]['all_date'])
             }
-            createGraphic(arrayAllWeight)
+            createGraphic(arrayAllDate, arrayAllWeight)
 		}
 	};
 	httpRequest.open('GET', `../config/fetchAllWeight.php`, true);

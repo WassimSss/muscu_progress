@@ -41,10 +41,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['email']) && $_SESSION['role
     <body>
     <?php require '../pages/navBarApp.php'; ?>
 
-        <div>
-            <a href="../pages/admin/users.php">Utilisateurs</a>
-            <a href="../pages/admin/exercices.php">Exercices</a>
+        <div class="link_admin">
+            <a href="../pages/admin_users.php">Utilisateurs</a>
+            <a href="../pages/admin_exercices.php">Exercices</a>
         </div>
+
         <div class="setting">
             <form action="" method="GET">
                 <label for="user_per_page">Nombre d'utilisateur par page</label>
@@ -95,10 +96,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['email']) && $_SESSION['role
             <?php
             for ($i = 1; $i <= $pagesTotales; $i++) { ?>
                 <a <?php
-                    if ($i == $pageCourante) { ?> class="active" <?php } ?> href="admin.php?page=<?= $i ?>&user=<?= $userPerPage ?>"><?= $i ?></a>
+                    if ($i == $pageCourante) { ?> class="active" <?php } ?> href="admin_users.php?page=<?= $i ?>&user=<?= $userPerPage ?>"><?= $i ?></a>
             <?php } ?>
         </div>
 
+        <?php require '../pages/footer.php'; ?>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="../js/admin.js"></script>

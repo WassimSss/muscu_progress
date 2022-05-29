@@ -783,17 +783,10 @@ buttonSumbitDay.addEventListener('click', function(e) {
 					addOneHTMLTitleExercice(result);
 					//addOneHTMLLineExercise(result)
 				}
-				if (
-					document.getElementById(`muscle_${result['muscle']}`) != null &&
-					document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) == null
-				) {
+				if ( document.getElementById(`muscle_${result['muscle']}`) != null && document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) == null) {
 					addOneHTMLTitleExercice(result);
 				}
-
-				if (
-					document.getElementById(`muscle_${result['muscle']}`) != null &&
-					document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) != null
-				) {
+				if (document.getElementById(`muscle_${result['muscle']}`) != null && document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) != null ) {
 					//Si le muscle et exercise existe
 					addOneHTMLLineExercise(result);
 				}

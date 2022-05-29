@@ -26,8 +26,6 @@ if(isset($_POST['submit_signup']))
 
                     if($password === $confirm_password)
                     {
-                        $erreur = "OK";
-
                         $addMember = $bdd->prepare("INSERT INTO membres (username, email, password, role_admin) VALUES (?, ?, ?, ?)");
                         $addMember->execute(array($username, $email, $password, 0));
 
@@ -36,12 +34,12 @@ if(isset($_POST['submit_signup']))
                     }
                     else
                     {
-                        $erreur = "Mot de passe pas pareil";
+                        $erreur = "Mot de passe non identique";
                     }
                 }
                 else
                 {
-                    $erreur = "Votre mot de passe doit .." ;
+                    $erreur = "Votre mot de passe doit être compris entre 6 et 20  caractère avec majuscule, minuscule et chiffre" ;
                 }
 
 
@@ -53,7 +51,7 @@ if(isset($_POST['submit_signup']))
         }
         else
         {
-            $erreur = "Votre pseudo doit contenir entre 4 et 20 lettres";
+            $erreur = "Votre pseudo doit contenir entre 4 et 20 lettres seulement";
         }
     }
     else

@@ -1,5 +1,3 @@
-<?php var_dump($title) ?>
-
 <nav class="nav_app">
     <ul>
         <div class="nav_left">

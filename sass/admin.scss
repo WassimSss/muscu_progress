@@ -1,9 +1,36 @@
 @import 'nav_app';
 
+.link_admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a{
+        color: white;
+        margin: 5px;
+        transition: color 0.2s;
+
+        &:hover{
+            color: $red;
+        }
+    // text-decoration: none;    
+    }
+    
+}
+
 .setting{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $white;
+    margin: 20px;
+}
+
+.form_add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     color: $white;
     margin: 20px;
 }

@@ -2,7 +2,9 @@
 session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
     require '../model/Weight.php';
-    $title = 'Profil'
+    $title = 'Profil';
+
+    require '../config/modifyProfil.php';
 ?>
 
     <!DOCTYPE html>
@@ -18,7 +20,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
     </head>
 
     <body>
-    <?php require '../pages/navBarApp.php'; ?>
+        <?php require '../pages/navBarApp.php';
+        ?>
 
         <div class="weight">
             <h2>Suivez votre <span class="red">poids</span> tout au long des semaines</h2>
@@ -48,7 +51,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                     <ion-icon name="close-outline"></ion-icon>
                 </p>
                 <h1>Veuillez ajouter votre <span class="red"> poids de cette semaine</span></h1>
-                <form action="../config/addWeight.php" method="get">
+                <form action="../config/addWeight.php" method="get" class="formpopup">
                     <div class="input_and_label pseudo">
                         <?php
                         $date = date('d.m.Y');
@@ -57,7 +60,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                         $year = date('Y');
                         ?>
                         <label for="week_weight">Poids</label>
-                        <input type="number" name="week_weight" id="week_weight" value="2">
+                        <input type="number" name="week_weight" id="week_weight" value="60">
                         <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
 
                         <input type="hidden" name="week_and_year" value="<?= $number_week / $year ?>">
@@ -67,23 +70,29 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
             </div>
         </div>
 
-        <div class="informations">
+        <form class="informations" method="post">
             <div class="input_and_label pseudo">
-                <input type="email" name="email" id="email" value="<?= $_SESSION['username'] ?>">
-                <label for="email" id="label_email">Pseudo</label>
+                <input type="username" name="username" id="username" value="<?= $_SESSION['username'] ?>">
+                <label for="username" id="label_username">Pseudo</label>
             </div>
 
             <div class="input_and_label password">
-                <input type="password" name="password" id="password">
-                <label for="password" id="label_password">Ancien Mot de passe</label>
+                <input type="password" name="password" id="password" placeholder="Champs vide = aucune modification du mdp">
+                <label for="password" id="label_password">Ancien mot de passe</label>
             </div>
 
             <div class="input_and_label password">
-                <input type="password" name="new_password" id="new_password">
+                <input type="password" name="new_password" id="new_password" placeholder="Champs vide = aucune modification du mdp">
                 <label for="new_password" id="label_new_password">Nouveau mot de passe</label>
             </div>
-            <input type="submit" class="submit_style" value="Modifier">
+            <input type="submit" class="submit_style" name="change_button" value="Modifier">
+        </form>
+        <div class="flex">
+            <p class="red"><?php if(isset($erreur)){ echo $erreur;} ?></p>
+            <p><?= $dumptest ?></p>
+            <p><?= $dumptest2 ?></p>
         </div>
+        <?php require '../pages/footer.php'; ?>
     </body>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

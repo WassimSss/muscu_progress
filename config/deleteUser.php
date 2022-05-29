@@ -7,4 +7,4 @@ $user = new User;
 
 $user->delete($_GET['id']);
 
-header('Location: ../pages/admin.php');
+header('Location: ../pages/admin_users.php');

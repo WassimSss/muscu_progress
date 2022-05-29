@@ -16,6 +16,7 @@ class User {
 
         return $numberUsers;
     }
+    
     public function fetchAllUsers($start, $perPage){
         $selectUsers = $this->pdo->prepare("SELECT id, username, email, role_admin FROM membres ORDER BY `membres`.`id` ASC LIMIT $start, $perPage");
         $selectUsers->execute();

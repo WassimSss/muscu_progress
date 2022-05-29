@@ -73,6 +73,8 @@ require '../config/bddInscription.php';
         </form>
     </section>
 
+    <?php require '../pages/footer.php'; ?>
+
     <?php if(isset($erreur)){echo $erreur;} ?>
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/form_js.js"></script>
