@@ -147,6 +147,10 @@ body {
   align-items: center;
 }
 
+.align_center {
+  text-align: center;
+}
+
 .active_link {
   color: #F24646 !important;
   opacity: 70%;
@@ -275,6 +279,10 @@ body {
   background-color: #AF1717;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .signin_form {
   width: 340px;
 }
@@ -298,9 +306,7 @@ body {
   }
 
   .signin_form {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    margin: auto;
   }
 }
 

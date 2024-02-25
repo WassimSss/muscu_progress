@@ -30,7 +30,7 @@ class Weight {
     }
 
     public function fetchAllWeight(){
-        $selectWeight = $this->pdo->prepare("SELECT weight, all_date FROM weight WHERE user = ? ORDER BY `weight`.`all_date` ASC");
+        $selectWeight = $this->pdo->prepare("SELECT weight, all_date FROM weight WHERE user = ?  ORDER BY `weight`.`week_and_year` ASC, `weight`.`all_date` ASC");
         $selectWeight->execute(array($_SESSION['id']));
 
         $fetchAllWeight = $selectWeight->fetchAll();

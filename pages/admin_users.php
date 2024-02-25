@@ -82,7 +82,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['email']) && $_SESSION['role
                         <td><?= $key['username'] ?></td>
                         <td><?= $key['email'] ?></td>
                         <td><?= $key['role_admin'] ?></td>
-                        <!--<td><a class="deletion_request" href="../config/deleteUser.php?id=<?= $key['id'] ?>">Supprimer</a></td>-->
                         <td><a href="../config/deleteUser.php?id=<?= $key['id'] ?>" onclick="Supp(this.href); return(false);">
                                 <ion-icon name="trash-outline"></ion-icon>
                             </a></td>
@@ -108,4 +107,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['email']) && $_SESSION['role
 
     </html>
 
-<?php } ?>
+<?php } 
+else {
+    header('Location: ../pages/connexion.php');
+
+}
+    ?>

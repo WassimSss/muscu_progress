@@ -14,13 +14,10 @@ if(isset($_POST['submit_signup']))
         $password = sha1($_POST['password']);
         $confirm_password = sha1($_POST['confirm_password']);
 
-
-        if(preg_match("/^[a-zA-Z]{4,20}+$/", $username) === 1) //only letters, between 4 and 20
+        if(preg_match("/^[a-zA-Z]{4,20}+$/", $username) === 1) // Seulement des lettres, entre 4 et 20
         {
-
             if(filter_var($email, FILTER_VALIDATE_EMAIL))
             {
-
                 if (preg_match("/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.).{6,20}$/", $_POST['password'])) //Entre 6 & 20 minuscule maj chiffre obligation [a-zA-Z0-9]
                 {
 
@@ -41,8 +38,6 @@ if(isset($_POST['submit_signup']))
                 {
                     $erreur = "Votre mot de passe doit être compris entre 6 et 20  caractère avec majuscule, minuscule et chiffre" ;
                 }
-
-
             }
             else
             {
@@ -58,6 +53,6 @@ if(isset($_POST['submit_signup']))
     {
         $erreur = "Veuillez remplir tout les champs";
     }
-
 }
 ?>
+

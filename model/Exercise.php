@@ -14,17 +14,39 @@ class Exercise
         $this->pdo = Bdd::importBdd();
     }
 
-    public function insert($date, $hour)
+    public function insert($idUser, $date, $hour)
     {
-        $insertExercise = $this->pdo->prepare("INSERT INTO exercise (nom_exercise, user, muscle, poids, repetition, date, hour) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $insertExercise->execute(array($_POST['addExercise'], $_SESSION['id'], $_POST['addMuscle'], $_POST['addWeight'], $_POST['addRepetition'], $date, $hour)); 
-        $lastId = $this->pdo->lastInsertId();
-        echo json_encode(["nom_exercise" => $_POST['addExercise'], "user" => $_SESSION['id'], "muscle" => $_POST['addMuscle'], "poids" => $_POST['addWeight'], "repetition" => $_POST['addRepetition'], "date" => $date, "hour" => $hour, "id" => $lastId]);
+        if (isset($_POST['addExercise'], $_POST['addMuscle'], $_POST['addWeight'], $_POST['addRepetition'])) {
+            if (!empty($_POST['addExercise']) && !empty($_POST['addMuscle'])) {
+                if (preg_match("/\d/", $_POST['addWeight']) === 1) {
+                    if (preg_match("/\d/", $_POST['addRepetition']) === 1) {
+
+                        $addExercise = htmlspecialchars($_POST['addExercise']);
+                        $addMuscle = htmlspecialchars($_POST['addMuscle']);
+                        $addWeight = htmlspecialchars($_POST['addWeight']);
+                        $addRepetition = htmlspecialchars($_POST['addRepetition']);
+
+                        $insertExercise = $this->pdo->prepare("INSERT INTO exercise (nom_exercise, user, muscle, poids, repetition, date, hour) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                        $insertExercise->execute(array($addExercise, $idUser, $addMuscle, $addWeight, $addRepetition, $date, $hour));
+                        $lastId = $this->pdo->lastInsertId();
+                        echo json_encode(["nom_exercise" => $addExercise, "user" => $idUser, "muscle" => $addMuscle, "poids" => $addWeight, "repetition" => $addRepetition, "date" => $date, "hour" => $hour, "id" => $lastId]);
+                    } else {
+                        echo json_encode(["error" => 'Le nombre de séries doit être en nombre.']);
+                    }
+                } else {
+                    echo json_encode(["error" => 'Le poids doit être en nombre.']);
+                }
+            } else {
+                echo json_encode(["error" => 'Veuillez remplir toutes les données.']);
+            }
+        } else {
+            echo json_encode(["error" => 'Veuillez remplir toutes les données.']);
+        }
     }
 
     public function recupDaySession($id, $day)
     {
-        $recupSession = $this->pdo->prepare("SELECT nom_exercise, user, muscle, poids, repetition, date, hour, id FROM exercise WHERE user=? and date=?  ORDER BY `exercise`.`date` DESC, `exercise`.`hour` DESC"); //trier par heure puis muscle aucun changement dans le rafraichissement
+        $recupSession = $this->pdo->prepare("SELECT nom_exercise, user, muscle, poids, repetition, date, hour, id FROM exercise WHERE user=? and date=?  ORDER BY `exercise`.`date` DESC, `exercise`.`hour` DESC"); //Trier par heure puis muscle
         $recupSession->execute(array($id, $day));
         $fetchRecupSession = $recupSession->fetchAll();
         return $fetchRecupSession;
@@ -101,7 +123,8 @@ class Exercise
         return $fetchRecupAllExercise;
     }
 
-    public function adminAddMuscleAndExercise($muscle, $exercise){
+    public function adminAddMuscleAndExercise($muscle, $exercise)
+    {
         $reqAdd = $this->pdo->prepare("INSERT INTO all_muscle (muscle, exercise) VALUES (?, ?)");
         $reqAdd->execute(array($muscle, $exercise));
     }

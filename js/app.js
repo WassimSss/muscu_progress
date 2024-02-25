@@ -34,7 +34,6 @@ var buttonSumbitDay = document.getElementById('submit_day_session');
 var testButton = document.getElementById('test');
 var allContain = document.querySelector('.all_contain');
 var dayRecap = document.querySelector('.all_for_muscle');
-var idUser = document.getElementById('id_user');
 var allForMuscleSolo = document.getElementsByClassName('all_for_muscle_solo');
 var allForMuscleSoloQuery = document.querySelectorAll('.all_for_muscle_solo');
 const calendar = document.querySelector('.calendar');
@@ -108,6 +107,7 @@ function addHTMLTitleMuscle(jsonObj, nameClass, divPasting, theadActivated = fal
 
 function addOneHTMLTitleMuscle(postJsonObj) {
 	//Ajoute seulement une ligne pour la methode post //fetchBdd -> result get / postJsonObj -> result post
+	console.log(postJsonObj);
 	var allForMuscleDiv = document.createElement('div');
 	allForMuscleDiv.classList.add('all_for_muscle_solo');
 	var muscleNameCss = postJsonObj['muscle'].replaceAll(' ', '_'); //Permet d'avoir un nom lisible en css
@@ -212,7 +212,7 @@ function addHTMLTitleExercise(jsonObj, ulModeActivated = false) {
 				liWeightHidden.classList.add('weight_in_day');
 				liWeightHidden.innerHTML = line['poids'];
 				ulDivHiddenOne.appendChild(liWeightHidden);
-				
+
 				var spanKg = document.createElement('span');
 				spanKg.classList.add('red');
 				spanKg.innerHTML = ' kg';
@@ -237,7 +237,6 @@ function addHTMLTitleExercise(jsonObj, ulModeActivated = false) {
 			}
 		} else {
 			if (ulModeActivated) {
-				
 				var liDayHidden = document.createElement('li');
 				divOther.appendChild(liDayHidden);
 
@@ -267,7 +266,7 @@ function addHTMLTitleExercise(jsonObj, ulModeActivated = false) {
 				liRepetitionHidden.innerHTML = line['repetition'];
 				ulDivHiddenOne.appendChild(liRepetitionHidden);
 
-				liSeriesDay.innerHTML = divOther.childElementCount
+				liSeriesDay.innerHTML = divOther.childElementCount;
 			} else {
 				addHTMLLineExericise(line, exerciceNameCss);
 			}
@@ -595,17 +594,22 @@ function thisDayWorked() {
 	var allActive = document.querySelectorAll('.active');
 
 	for (let a = 0; a < allActive.length; a++) {
+		// Créer une action aux cliques pour chaque case active
 		allActive[a].addEventListener('click', function(e) {
-			for (let test = 0; test < e.target.classList.length; test++) {
-				if (e.target.classList[test].includes('date')) {
-					dateClicked = e.target.classList[test].replaceAll('date_', '');
-					document.querySelector(".text_date").innerHTML = dateClicked.replaceAll(".","/");
+			for (let oneActive = 0; oneActive < e.target.classList.length; oneActive++) {
+				// Si la case cliquée contient une classe qui contient date
+				if (e.target.classList[oneActive].includes('date')) {
+					// On remplace date_ par rien (ex : date_01.02.2022 -> 01.02.2022)
+					dateClicked = e.target.classList[oneActive].replaceAll('date_', '');
+					// (ex : 01.02.2022 -> 01/02/2022)
+					document.querySelector('.text_date').innerHTML = dateClicked.replaceAll('.', '/');
 				}
 			}
 			httpRequest.onreadystatechange = () => {
 				if (httpRequest.readyState == 4) {
 					thisDayWorked = JSON.parse(httpRequest.response);
 					thisDayWorked = thisDayWorked.reverse();
+					// Vide la section à chaque clique
 					sessionForDay.innerHTML = '';
 					addHTMLTitleMuscle(thisDayWorked, 'one_muscle', sessionForDay, true);
 					addHTMLTitleExercise(thisDayWorked, true);
@@ -617,10 +621,10 @@ function thisDayWorked() {
 						});
 					}
 
-					// document.querySelector(".session_in_day").innerHTML = thisDayWorked;
 				}
 			};
-			httpRequest.open('GET', `../config/fetchExerciceInDay.php?test=${dateClicked}`, true);
+			// Envoie la date en method get pour la récuperer
+			httpRequest.open('GET', `../config/fetchExerciceInDay.php?day=${dateClicked}`, true);
 			httpRequest.send();
 		});
 	}
@@ -726,7 +730,7 @@ function fetchJsonObj() {
 			fetchAllDayWorked();
 		}
 	};
-	httpRequest.open('GET', `../config/fetchExercise.php?id=${idUser.value}`, true);
+	httpRequest.open('GET', `../config/fetchExercise.php?`, true);
 	httpRequest.send();
 }
 
@@ -772,23 +776,29 @@ buttonSumbitDay.addEventListener('click', function(e) {
 			if (httpRequest.status === 200) {
 				var result = JSON.parse(httpRequest.response);
 
-				if (document.querySelector('.empty_session_div') != null) {
-					// Si la div "Aucun programme rentré existe", on doit l'enlever car on viens d'ajouter quelque chose
-					deleteAllDiv(allContain, 'empty_session_div');
-				}
+				if (!result['error']) {
+					document.getElementById('error').innerHTML = '';
+					if (document.querySelector('.empty_session_div') != null) {
+						// Si la div "Aucun programme rentré existe", on doit l'enlever car on viens d'ajouter quelque chose
+						deleteAllDiv(allContain, 'empty_session_div');
+					}
 
-				if (document.getElementById(`muscle_${result['muscle']}`) == null) {
-					// Si le muscle existe
-					addOneHTMLTitleMuscle(result);
-					addOneHTMLTitleExercice(result);
-					//addOneHTMLLineExercise(result)
+					if (document.getElementById(`muscle_${result['muscle']}`) == null) {
+						// Si le muscle existe
+						addOneHTMLTitleMuscle(result);
+						addOneHTMLTitleExercice(result);
+						//addOneHTMLLineExercise(result)
+					}
+					if (document.getElementById(`muscle_${result['muscle']}`) != null && document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) == null) {
+						addOneHTMLTitleExercice(result);
+					}
+					if (document.getElementById(`muscle_${result['muscle']}`) != null && document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) != null ) {
+						//Si le muscle et exercise existe
+						addOneHTMLLineExercise(result);
+					}
 				}
-				if ( document.getElementById(`muscle_${result['muscle']}`) != null && document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) == null) {
-					addOneHTMLTitleExercice(result);
-				}
-				if (document.getElementById(`muscle_${result['muscle']}`) != null && document.getElementById(`exercise_${result['muscle']}_${result['nom_exercise']}`) != null ) {
-					//Si le muscle et exercise existe
-					addOneHTMLLineExercise(result);
+				else{
+					document.getElementById('error').innerHTML = result['error'];
 				}
 			} else {
 				alert('impossible de contacterle serveur');
@@ -804,7 +814,6 @@ buttonSumbitDay.addEventListener('click', function(e) {
 		data.append('addExercise', addExercise.value);
 		data.append('addWeight', addWeight.value);
 		data.append('addRepetition', addRepetition.value);
-		data.append('id', idUser.value);
 	}
 
 	httpRequest.send(data);
@@ -813,4 +822,3 @@ buttonSumbitDay.addEventListener('click', function(e) {
 // showMore.addEventListener('click', function(e) {
 // 	document.querySelector('.all_series').classList.toggle('active');
 // });
-

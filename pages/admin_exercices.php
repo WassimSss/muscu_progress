@@ -122,4 +122,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['email']) && $_SESSION['role
 
     </html>
 
-<?php } ?>
+<?php } else {
+    header('Location: ../pages/connexion.php');
+} ?>

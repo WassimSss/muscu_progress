@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
+
 require_once('../model/Exercise.php');   
 
 $exercice = new Exercise;
@@ -8,11 +11,10 @@ $date = date('d.m.Y');
 $hour = date("H.i.s");
 
 // créer variable date
-var_dump($_POST);
-$exercice->insert($date, $hour);
-$_SESSION['id'] = $_POST['id'];
-
-// echo json_encode($exercice);
-?>
+$idUser = $_SESSION['id'];
+$exercice->insert($idUser, $date, $hour);
+} else {
+    header('Location: ../pages/connexion.php');
+}
 
 

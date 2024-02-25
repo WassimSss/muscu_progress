@@ -33,7 +33,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                     $weightReplace = str_replace(".", "/", $weight['all_date']);
                 ?>
 
-                    <p class="date_and_weight"><?= $weightReplace ?> - <span class="red"><?= $weight['weight'] ?>kg</span></p>
+                    <p class="date_and_weight"><?= $weightReplace ?> - <span class="red"><?= round($weight['weight'], 2) ?>kg</span></p>
                 <?php } ?>
             </div>
             <div class="block_weight" id="add_weight">
@@ -60,9 +60,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                         $year = date('Y');
                         ?>
                         <label for="week_weight">Poids</label>
-                        <input type="number" name="week_weight" id="week_weight" value="60">
-                        <input type="hidden" name="user" value="<?= $_SESSION['id'] ?>">
-
+                        <input type="number" name="week_weight" id="week_weight" value="60" step="0.01" min="0">
                         <input type="hidden" name="week_and_year" value="<?= $number_week / $year ?>">
                     </div>
                     <input type="submit" class="submit_style" value="Ajouter">
@@ -86,12 +84,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                 <label for="new_password" id="label_new_password">Nouveau mot de passe</label>
             </div>
             <input type="submit" class="submit_style" name="change_button" value="Modifier">
+
+            <?php if(isset($erreur)) { ?>
+                <p class="red align_center"><?=$erreur?></p>
+            <?php } ?>
         </form>
-        <div class="flex">
-            <p class="red"><?php if(isset($erreur)){ echo $erreur;} ?></p>
-            <p><?= $dumptest ?></p>
-            <p><?= $dumptest2 ?></p>
-        </div>
+
+
         <?php require '../pages/footer.php'; ?>
     </body>
 
@@ -105,7 +104,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
     </html>
 
 <?php } else {
-    echo "Veuillez vous connectez";
+    header('Location: ../pages/connexion.php');
 }
 
 

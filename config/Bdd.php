@@ -15,4 +15,4 @@ class Bdd {
 }
 
 //self::$instance = new PDO("mysql:host=127.1.0.0;dbname=muscuprogress", "root", "", [
-//self::$instance = new PDO("mysql:host=mysql-wassilmi.alwaysdata.net;dbname=wassilmi_muscuprogress", "wassilmi", "rVxXMSWzpk7d8Xp", [
+//self::$instance = new PDO("mysql:host=mysql-muscuprogress.alwaysdata.net;dbname=muscuprogress_muscuprogress", "271009_wassim", "M7eIOFk", [

@@ -1,4 +1,7 @@
 <?php
+
+if (isset($_SESSION['username']) && isset($_SESSION['email']) && $_SESSION['role_admin'] == 1) {
+
 require_once '../model/Exercise.php';
 $exercise = new Exercise;
 
@@ -17,4 +20,8 @@ if (isset($_POST['submit_add_exercise'])) {
     } else {
         $erreur = "Veuillez entrer un muscle et un exercice";
     }
+}
+
+} else {
+    header('Location: ../pages/connexion.php');
 }

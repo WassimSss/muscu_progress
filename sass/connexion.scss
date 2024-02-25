@@ -1,5 +1,8 @@
 @import 'general_form';
 
+body{
+    overflow-x: hidden;
+}
 
 .signin_form {
     width: 340px;
@@ -28,9 +31,7 @@
     }
 
     .signin_form{
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%);
+        margin: auto;
     }
     
 }

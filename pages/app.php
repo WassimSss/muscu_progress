@@ -64,7 +64,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
 
                             <div class="input_and_label">
                                 <input type="number" name="choise_repetition" id="choise_repetition">
-                                <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>" id="id_user"> <!-- SECURISER SESSION ID IL PEUT ETRE MODIFIER PAR INSPECTER -->
                                 <label for="choise_repetition" id="choise_repetition">Répétitions</label>
                                 <!-- <ion-icon name="add-outline" class="more_logo" id="add__repetition_button"></ion-icon> -->
                             </div>
@@ -73,6 +72,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
 
                         </div>
                     </form>
+                    <p class="red" id="error"></p>
                 </div>
 
             </section>
@@ -128,7 +128,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
 
 
 <?php } else {
-    echo "Veuillez vous connectez";
+    header('Location: ../pages/connexion.php');
 }
 
 
